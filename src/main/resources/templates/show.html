@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр пользователя</title>
+</head>
+<body>
+
+<h2>Просмотр пользователя</h2>
+<table>
+    <tr>
+        <td><label>Имя:</label></td>
+        <td><span th:text="${user.name}"></span></td>
+    </tr>
+    <tr>
+        <td><label>Фамилия:</label></td>
+        <td><span th:text="${user.surname}"></span></td>
+    </tr>
+    <tr>
+        <td><label>Электронная почта:</label></td>
+        <td><span th:text="${user.email}"></span></td>
+    </tr>
+
+</table>
+<button type="button" onclick="window.location.href='/logout'" style="width: 100%;">Выйти
+</button>
+
+</body>
+</html>

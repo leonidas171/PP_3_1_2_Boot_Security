@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение пользователя</title>
+</head>
+<body>
+
+<h2>Редактирование пользователя</h2>
+<form th:method="POST" th:action="@{/admin/update}" th:object="${user}">
+    <table>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{password}"/>
+        <div th:each="role : ${user.roles}">
+            <input type="hidden" th:field="*{roles}"/>
+        </div>
+        <tr>
+            <td><label for="name">Ввод имени:</label></td>
+            <td><input type="text" th:field="*{name}" id="name"/></td>
+        </tr>
+        <tr>
+            <td><label for="lastname">Ввод фамилии:</label></td>
+            <td><input type="text" th:field="*{surname}" id="lastname"/></td>
+        </tr>
+        <tr>
+            <td><label for="email">Ввод почты:</label></td>
+            <td><input type="text" th:field="*{email}" id="email"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right;">
+                <div style="display: inline-block; gap: 10px;">
+                    <input type="submit" value="Изменить">
+                    <button type="button" onclick="window.location.href='/admin'">Отмена</button>
+                </div>
+                <button type="button" onclick="window.location.href='/logout'" style="width: 100%;">Выйти
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

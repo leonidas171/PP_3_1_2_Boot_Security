@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый пользователь</title>
+</head>
+<body>
+
+<h2>Создание нового пользователя</h2>
+<form th:method="POST" th:action="@{/admin/create}" th:object="${user}">
+    <table>
+        <tr>
+            <td><label for="name">Ввод имени:</label></td>
+            <td><input type="text" th:field="*{name}" id="name"/></td>
+        </tr>
+        <tr>
+            <td><label for="lastname">Ввод фамилии:</label></td>
+            <td><input type="text" th:field="*{surname}" id="lastname"/></td>
+        </tr>
+        <tr>
+            <td><label for="email">Ввод почты:</label></td>
+            <td><input type="text" th:field="*{email}" id="email"/></td>
+        </tr>
+        <tr>
+            <td><label for="password">Ввод пароля:</label></td>
+            <td><input type="password" th:field="*{password}" id="password"/></td>
+        </tr>
+        <tr>
+            <td><label for="role">Выбор роли:</label></td>
+            <td>
+                <!-- Выпадающее меню для выбора нескольких ролей -->
+                <select id="role" name="roles" multiple="multiple">
+                    <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right;">
+                <!-- Кнопка отправки формы -->
+                <input type="submit" value="Создать!">
+                <button type="button" onclick="window.location.href='/admin'">Отмена</button>
+                <button type="button" onclick="window.location.href='/logout'" style="width: 100%;">Выйти</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
